@@ -25,8 +25,9 @@ class ProxySpider(scrapy.Spider):
             ip_row = re.sub(r'<div style="display:none">.*?</div>', '', ip_row)
             ip_row = re.sub(r'</?span(.*?)>', '', ip_row)
 
-            yield {'id': id,
-                   'ip': ip_row.replace(' ',''),
+            yield {'ip': ip_row.replace(' ',''),
                    'port': port_row.replace(' ','') }
 
             id += 1
+
+    # scrapy runspider p_spider.py -o proxies.json
